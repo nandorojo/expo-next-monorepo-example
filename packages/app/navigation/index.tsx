@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo } from 'react';
+import React, { useReducer, useMemo, useEffect } from 'react';
 import { NavigationContainer, useLinkTo } from '@react-navigation/native';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
@@ -10,7 +10,8 @@ import { Platform } from 'react-native';
 
 function LinkTo() {
   const linkTo = useLinkTo();
-  React.useEffect(function trigger() {
+
+  useEffect(function triggerNativeNavigation() {
     if (Platform.OS === 'web' && Router) {
       const handler = (path: string) => {
         linkTo(path);
